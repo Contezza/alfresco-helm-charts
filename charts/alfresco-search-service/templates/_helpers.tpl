@@ -58,6 +58,18 @@ Get Alfresco Search Pull Policy
 {{- end -}}
 
 {{/*
+GET JAVA_TOOLS OPTIONS
+*/}}
+{{- define "alfresco-search.javaToolOptions" -}}
+{{- $environment := .Values.environment | default dict }}
+  {{- range $key, $val := $environment }}
+  {{- if eq $key "JAVA_TOOL_OPTIONS" }}
+  {{- tpl $val $ -}}
+  {{- end }}
+  {{- end }}
+{{- end -}}
+
+{{/*
 Get Alfresco Search Docker Image
 */}}
 {{- define "alfresco-search.dockerImage" -}}
